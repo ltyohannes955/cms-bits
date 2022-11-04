@@ -4,6 +4,8 @@
  */
 package com.cms.Ui;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author samab
@@ -28,7 +30,7 @@ public class LoginFrame extends javax.swing.JFrame {
 
         jPanel4 = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
-        jTextField4 = new javax.swing.JTextField();
+        userName = new javax.swing.JTextField();
         jPasswordField4 = new javax.swing.JPasswordField();
         jLabel9 = new javax.swing.JLabel();
         JCheckBox4 = new javax.swing.JCheckBox();
@@ -43,12 +45,12 @@ public class LoginFrame extends javax.swing.JFrame {
         jLabel8.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jLabel8.setText("User Name");
 
-        jTextField4.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jTextField4.setForeground(java.awt.Color.lightGray);
-        jTextField4.setText("Enter User ");
-        jTextField4.addActionListener(new java.awt.event.ActionListener() {
+        userName.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        userName.setForeground(java.awt.Color.lightGray);
+        userName.setText("Enter User ");
+        userName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField4ActionPerformed(evt);
+                userNameActionPerformed(evt);
             }
         });
 
@@ -92,7 +94,7 @@ public class LoginFrame extends javax.swing.JFrame {
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 353, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(userName, javax.swing.GroupLayout.PREFERRED_SIZE, 353, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel8)
                             .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jPasswordField4, javax.swing.GroupLayout.PREFERRED_SIZE, 353, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -109,7 +111,7 @@ public class LoginFrame extends javax.swing.JFrame {
                 .addGap(39, 39, 39)
                 .addComponent(jLabel8)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(userName, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(24, 24, 24)
                 .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -153,9 +155,9 @@ public class LoginFrame extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed
+    private void userNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userNameActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField4ActionPerformed
+    }//GEN-LAST:event_userNameActionPerformed
 
     private void jPasswordField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPasswordField4ActionPerformed
         // TODO add your handling code here:
@@ -167,6 +169,25 @@ public class LoginFrame extends javax.swing.JFrame {
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
 
+        String username = userName.getText();
+        String password = jPasswordField4.getText();
+        
+        if(username.equals("")&&password.equals("")){
+            JOptionPane.showMessageDialog(this,"Enter UserName and Password");
+        }
+        else if(!(username.equals(""))&&password.equals("")){
+            JOptionPane.showMessageDialog(this, "Please Enter Password..");
+        }
+        else if(username.equals("")&&!(password.equals(""))){
+            JOptionPane.showMessageDialog(this,"Please Enter User..");
+        }
+        else if (username.equals("Sam")&&password.equals("nigger")){
+            HomeFrame hframe = new HomeFrame();
+            hframe.setVisible(true);
+        }
+        else{
+            JOptionPane.showMessageDialog(this,"Invalid username and password");
+        }
     }//GEN-LAST:event_jButton4ActionPerformed
 
        
@@ -207,34 +228,13 @@ public class LoginFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JCheckBox JCheckBox1;
-    private javax.swing.JCheckBox JCheckBox2;
-    private javax.swing.JCheckBox JCheckBox3;
     private javax.swing.JCheckBox JCheckBox4;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
-    private javax.swing.JPasswordField jPasswordField1;
-    private javax.swing.JPasswordField jPasswordField2;
-    private javax.swing.JPasswordField jPasswordField3;
     private javax.swing.JPasswordField jPasswordField4;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
+    private javax.swing.JTextField userName;
     // End of variables declaration//GEN-END:variables
 }
