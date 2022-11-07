@@ -47,7 +47,6 @@ public class LoginFrame extends javax.swing.JFrame {
 
         userName.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         userName.setForeground(java.awt.Color.lightGray);
-        userName.setText("Enter User ");
         userName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 userNameActionPerformed(evt);
@@ -56,7 +55,6 @@ public class LoginFrame extends javax.swing.JFrame {
 
         jPasswordField4.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jPasswordField4.setForeground(java.awt.Color.lightGray);
-        jPasswordField4.setText("jPasswordField1");
         jPasswordField4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jPasswordField4ActionPerformed(evt);
