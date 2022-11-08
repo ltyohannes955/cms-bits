@@ -21,16 +21,17 @@ import javax.swing.table.AbstractTableModel;
  */
 public class CourseTableModel extends AbstractTableModel {
     java.util.List<Course> courses = new ArrayList<>();
-    String columnNames[] = {"Course Id","Name","Description"};
+    String columnNames[] = {"Course Code","Name","Description","Catagory"};
     
-    Class<?> columnClasses[] = {Integer.class, String.class, String.class};
+    Class<?> columnClasses[] = {String.class, String.class, String.class, String.class};
     
     Map fieldMap = new HashMap();
     
     CourseTableModel(){
-        fieldMap.put(0, "Course Id");
+        fieldMap.put(0, "Course Code");
         fieldMap.put(1, "Name");
         fieldMap.put(2,"Description");
+        fieldMap.put(3, "Catagory");
     }
 
     @Override
