@@ -49,8 +49,7 @@ public class CourseTableModel extends AbstractTableModel {
     public Object getValueAt(int rowIndex, int columnIndex) {
         var methodName = String.format("get%s", (String) fieldMap.get(columnIndex));
         Method method = Util.getByMethodName(courses.get(rowIndex), methodName);
-        Object result = Util.callMethod(method, courses.get(rowIndex));
-        return columnIndex == 0 ? (int) result : (String) result;
+        return (String) Util.callMethod(method, courses.get(rowIndex));
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     @Override
@@ -70,16 +69,14 @@ public class CourseTableModel extends AbstractTableModel {
     
     @Override
     public void setValueAt(Object aValue, int rowIndex, int columnIndex) {
-        Course course = courses.get(rowIndex);
-        String column = (String) fieldMap.get(columnIndex);
-        var methodName = String.format("set%s", column);
-        Method method = Util.getByMethodName(course, methodName, String.class);
+        var methodName = String.format("set%s", (String) fieldMap.get(columnIndex));
+        Method method = Util.getByMethodName(courses.get(rowIndex), methodName, String.class);
         Util.callMethod(method, courses.get(rowIndex), aValue);
 
         fireTableCellUpdated(rowIndex, columnIndex);
         
         CourseService service = new CourseService();
-        service.update(course, column, (String) aValue);
+        service.writeAll(courses);
     }
     
     
