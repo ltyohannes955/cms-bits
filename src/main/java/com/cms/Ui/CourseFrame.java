@@ -44,7 +44,7 @@ public class CourseFrame extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         nameField = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        idField = new javax.swing.JTextField();
+        codeField = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         descriptionField = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
@@ -67,7 +67,7 @@ public class CourseFrame extends javax.swing.JFrame {
         jLabel3.setText("Course Name:");
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel4.setText("Course ID:");
+        jLabel4.setText("Course Code:");
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel5.setText("Course Catagory:");
@@ -103,7 +103,7 @@ public class CourseFrame extends javax.swing.JFrame {
                     .addComponent(nameField, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                         .addComponent(catagoryCombo, javax.swing.GroupLayout.Alignment.LEADING, 0, 148, Short.MAX_VALUE)
-                        .addComponent(idField, javax.swing.GroupLayout.Alignment.LEADING))
+                        .addComponent(codeField, javax.swing.GroupLayout.Alignment.LEADING))
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                         .addGroup(jPanel1Layout.createSequentialGroup()
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -121,7 +121,7 @@ public class CourseFrame extends javax.swing.JFrame {
                     .addComponent(nameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(12, 12, 12)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(idField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(codeField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4))
                 .addGap(12, 12, 12)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -170,13 +170,15 @@ public class CourseFrame extends javax.swing.JFrame {
 
     private void addBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addBtnActionPerformed
         // TODO add your handling code here:
-        if (nameField.getText().equals("") || idField.getText().equals("")) {
-            JOptionPane.showMessageDialog(this, "name and id entries are empty!");
+        if (codeField.getText().equals("") ) {
+            JOptionPane.showMessageDialog(this, "code entry are empty!");
+        } else if(nameField.getText().equals("")){
+            JOptionPane.showMessageDialog(this, "name entry is missing!");
         } else if(descriptionField.getText().equals("")){
             JOptionPane.showMessageDialog(this, "description field is empty!");
         } else {
             CourseService service = new CourseService();
-            Course course = new Course(idField.getText(), nameField.getText(), descriptionField.getText()); 
+            Course course = new Course(codeField.getText(), nameField.getText(), descriptionField.getText(), (String) catagoryCombo.getSelectedItem()); 
             try {
                 service.save(course);
             } catch (IOException ex) {
@@ -184,7 +186,7 @@ public class CourseFrame extends javax.swing.JFrame {
             model.courses.add(course);
             model.fireTableDataChanged();
             nameField.setText("");
-            idField.setText("");
+            codeField.setText("");
             descriptionField.setText("");
         }
         
@@ -231,8 +233,8 @@ public class CourseFrame extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addBtn;
     private javax.swing.JComboBox<String> catagoryCombo;
+    private javax.swing.JTextField codeField;
     private javax.swing.JTextField descriptionField;
-    private javax.swing.JTextField idField;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

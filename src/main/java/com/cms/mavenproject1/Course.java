@@ -4,24 +4,37 @@
  */
 package com.cms.mavenproject1;
 
+import java.io.Serializable;
+
 /**
  *
  * @author samab
  */
-public class Course {
+public class Course implements Serializable{
     
-    private String Id;
+    private String Code;
     private String Name;
     private String Description;
+    private String Catagory;
     
-    public Course(String Id, String Name, String Description){
-        this.Id = Id;
+    public Course(String Code, String Name, String Description){
+        this.Code = Code;
         this.Name = Name;
         this.Description = Description;
     }
-
-    public String getId() {
-        return Id;
+    public Course(String Code, String Name, String Description, String Catagory){
+        this(Code, Name, Description);
+        this.Catagory = Catagory;
+    }
+    public String getCatagory(){
+        return Catagory;
+    }
+    public void setCatagory(String Catagory){
+        this.Catagory = Catagory;
+    }
+    
+    public String getCode() {
+        return Code;
     }
     public String getName() {
         return Name;
@@ -29,13 +42,13 @@ public class Course {
     public String getDescription() {
         return Description;
     }
-    public void setId(String id) {
-        Id = id;
+    public void setCode(String Code) {
+        this.Code = Code;
     }
-    public void setName(String name) {
-        Name = name;
+    public void setName(String Name) {
+        this.Name = Name;
     }
-    public void setDescription(String description) {
-        Description = description;
+    public void setDescription(String Description) {
+        this.Description = Description;
     }
 }
