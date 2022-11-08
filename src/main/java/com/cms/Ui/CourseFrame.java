@@ -4,6 +4,9 @@
  */
 package com.cms.Ui;
 
+import Service.CourseService;
+import com.cms.mavenproject1.Course;
+import java.io.IOException;
 import javax.swing.JOptionPane;
 
 /**
@@ -11,11 +14,18 @@ import javax.swing.JOptionPane;
  * @author MyPc
  */
 public class CourseFrame extends javax.swing.JFrame {
+    CourseTableModel model;
+    
+    
+    
 
     /**
      * Creates new form course Frame
      */
     public CourseFrame() {
+        model = new CourseTableModel();
+        CourseService service = new CourseService();
+        model.courses = service.getAll();
         initComponents();
     }
 
@@ -67,25 +77,7 @@ public class CourseFrame extends javax.swing.JFrame {
 
         catagoryCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Course ID", "Name", "Description", "Select"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Boolean.class
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-        });
+        jTable1.setModel(model);
         jScrollPane1.setViewportView(jTable1);
 
         addBtn.setText("Add");
@@ -183,7 +175,17 @@ public class CourseFrame extends javax.swing.JFrame {
         } else if(descriptionField.getText().equals("")){
             JOptionPane.showMessageDialog(this, "description field is empty!");
         } else {
-            
+            CourseService service = new CourseService();
+            Course course = new Course(idField.getText(), nameField.getText(), descriptionField.getText()); 
+            try {
+                service.save(course);
+            } catch (IOException ex) {
+            }
+            model.courses.add(course);
+            model.fireTableDataChanged();
+            nameField.setText("");
+            idField.setText("");
+            descriptionField.setText("");
         }
         
             

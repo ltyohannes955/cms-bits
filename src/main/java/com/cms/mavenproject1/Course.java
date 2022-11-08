@@ -10,11 +10,17 @@ package com.cms.mavenproject1;
  */
 public class Course {
     
-    private int Id;
+    private String Id;
     private String Name;
     private String Description;
+    
+    public Course(String Id, String Name, String Description){
+        this.Id = Id;
+        this.Name = Name;
+        this.Description = Description;
+    }
 
-    public int getId() {
+    public String getId() {
         return Id;
     }
     public String getName() {
@@ -23,7 +29,7 @@ public class Course {
     public String getDescription() {
         return Description;
     }
-    public void setId(int id) {
+    public void setId(String id) {
         Id = id;
     }
     public void setName(String name) {
