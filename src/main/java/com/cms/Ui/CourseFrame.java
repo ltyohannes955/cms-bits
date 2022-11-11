@@ -16,7 +16,9 @@ import javax.swing.JOptionPane;
 public class CourseFrame extends javax.swing.JFrame {
     CourseTableModel model;
     
-    
+    //static variabes
+    public static String foreignCourseName;
+    public static String foreignDesc;
     
 
     /**
@@ -178,11 +180,14 @@ public class CourseFrame extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "description field is empty!");
         } else {
             CourseService service = new CourseService();
+            foreignCourseName = nameField.getText();
+            foreignDesc = descriptionField.getText();
             Course course = new Course(codeField.getText(), nameField.getText(), descriptionField.getText(), (String) catagoryCombo.getSelectedItem()); 
             try {
                 service.save(course);
             } catch (IOException ex) {
             }
+            System.out.println(foreignCourseName + " " + foreignDesc);
             model.courses.add(course);
             model.fireTableDataChanged();
             nameField.setText("");

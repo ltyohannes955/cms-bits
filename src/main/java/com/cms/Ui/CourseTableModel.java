@@ -20,7 +20,7 @@ import javax.swing.table.AbstractTableModel;
  * @author samab
  */
 public class CourseTableModel extends AbstractTableModel {
-    java.util.List<Course> courses = new ArrayList<>();
+    ArrayList<Course> courses = new ArrayList<>();
     String columnNames[] = {"Course Code","Name","Description","Catagory"};
     
     Class<?> columnClasses[] = {String.class, String.class, String.class, String.class};
