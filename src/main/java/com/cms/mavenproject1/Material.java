@@ -9,33 +9,49 @@ package com.cms.mavenproject1;
  * @author samab
  */
 public class Material {
-    private int ID;
-    private Course course;
-    private String name;
-
-
-
-    public int getID() {
-        return ID;
+    private int id;
+    private String path;
+    private String course;
+    private String fname;
+    
+    
+    public Material(String path , String course, String fname){
+        this.path = path;
+        this.course = course;
+        this.fname = fname;
+    }
+    public Material(int id, String path, String course, String fname){
+        this(path, course, fname);
+        this.id = id;
+    }
+    
+    public int getID(){
+        return this.id;
+    }
+    public void setID(int id){
+        this.id = id;
+    }
+    public String getpath() {
+        return path;
     }
 
-    public void setID(int ID) {
-        this.ID = ID;
+    public void setpath(String path) {
+        this.path = path;
     }
 
-    public Course getCourse() {
+    public String getCourse() {
         return course;
     }
 
-    public void setCourse(Course course) {
+    public void setCourse(String course) {
         this.course = course;
     }
 
-    public String getName() {
-        return name;
+    public String getfName() {
+        return fname;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setfName(String fname) {
+        this.fname = fname;
     }
 }

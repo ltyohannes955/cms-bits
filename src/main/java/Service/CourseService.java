@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package Service;
+import base.AppendableObjectOutputStream;
 import com.cms.mavenproject1.Course;
 import java.io.File;
 import java.io.FileInputStream;
@@ -26,7 +27,7 @@ public class CourseService {
         try {
             if (f.exists()) {
                 fos = new FileOutputStream(filename, true);
-                oos = new ObjectOutputStream(fos);
+                oos = new AppendableObjectOutputStream(fos);
             } else {
                 fos = new FileOutputStream(filename);
                 oos = new ObjectOutputStream(fos);
