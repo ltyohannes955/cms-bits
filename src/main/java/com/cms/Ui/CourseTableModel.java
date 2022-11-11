@@ -23,7 +23,7 @@ public class CourseTableModel extends AbstractTableModel {
     java.util.List<Course> courses = new ArrayList<>();
     String columnNames[] = {"ID", "Name","Description","Catagory"};
     
-    Class<?> columnClasses[] = {int.class,String.class, String.class, String.class};
+    Class<?> columnClasses[] = {int.class ,String.class, String.class, String.class};
     
     Map fieldMap = new HashMap();
     

@@ -175,7 +175,7 @@
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="0" green="cc" red="0" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Delete coure"/>
+            <Property name="text" type="java.lang.String" value="Delete course"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton2ActionPerformed"/>

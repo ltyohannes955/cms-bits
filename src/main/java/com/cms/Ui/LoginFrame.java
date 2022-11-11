@@ -186,6 +186,7 @@ public class LoginFrame extends javax.swing.JFrame {
         else{
             JOptionPane.showMessageDialog(this,"Invalid username and password");
         }
+        dispose();
     }//GEN-LAST:event_jButton4ActionPerformed
 
        

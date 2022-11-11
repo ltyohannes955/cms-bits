@@ -86,7 +86,7 @@ public class HomeFrame extends javax.swing.JFrame {
         });
 
         jButton2.setBackground(new java.awt.Color(0, 204, 0));
-        jButton2.setText("Delete coure");
+        jButton2.setText("Delete course");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
