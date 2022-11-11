@@ -11,3 +11,11 @@ CREATE TABLE public.Material (
 	id int4 NOT NULL GENERATED ALWAYS AS IDENTITY,
 	CONSTRAINT material_pk PRIMARY KEY (id)
 );
+
+CREATE TABLE public.Course (
+    course_name varchar NOT NULL,
+    descritption varchar NOT NULL,
+    catagory varchar NOT NULL,
+    id int NOT NULL GENERATED ALWAYS AS IDENTITY,
+    CONSTRAINT course_pk PRIMARY KEY(id)
+);

@@ -21,14 +21,14 @@ import javax.swing.table.AbstractTableModel;
  */
 public class CourseTableModel extends AbstractTableModel {
     java.util.List<Course> courses = new ArrayList<>();
-    String columnNames[] = {"Course Code","Name","Description","Catagory"};
+    String columnNames[] = {"ID", "Name","Description","Catagory"};
     
-    Class<?> columnClasses[] = {String.class, String.class, String.class, String.class};
+    Class<?> columnClasses[] = {int.class,String.class, String.class, String.class};
     
     Map fieldMap = new HashMap();
     
     CourseTableModel(){
-        fieldMap.put(0, "Course Code");
+        fieldMap.put(0, "ID");
         fieldMap.put(1, "Name");
         fieldMap.put(2,"Description");
         fieldMap.put(3, "Catagory");
@@ -70,6 +70,8 @@ public class CourseTableModel extends AbstractTableModel {
     
     @Override
     public void setValueAt(Object aValue, int rowIndex, int columnIndex) {
+        Course course = courses.get(rowIndex);
+        String column = (String) fieldMap.get(columnIndex);
         var methodName = String.format("set%s", (String) fieldMap.get(columnIndex));
         Method method = Util.getByMethodName(courses.get(rowIndex), methodName, String.class);
         Util.callMethod(method, courses.get(rowIndex), aValue);
@@ -77,7 +79,7 @@ public class CourseTableModel extends AbstractTableModel {
         fireTableCellUpdated(rowIndex, columnIndex);
         
         CourseService service = new CourseService();
-        service.writeAll(courses);
+        service.update(course ,column, (String) aValue);
     }
     
     

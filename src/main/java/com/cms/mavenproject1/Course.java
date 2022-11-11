@@ -12,18 +12,24 @@ import java.io.Serializable;
  */
 public class Course implements Serializable{
     
-    private String Code;
+    private int ID;
     private String Name;
     private String Description;
     private String Catagory;
     
-    public Course(String Code, String Name, String Description){
-        this.Code = Code;
+    public Course(String Name, String Description, String Catagory){
+        this.Name = Name;
+        this.Description = Description;
+        this.Catagory = Catagory;
+        
+    }
+    public Course(int ID, String Name, String Description){
+        this.ID = ID;
         this.Name = Name;
         this.Description = Description;
     }
-    public Course(String Code, String Name, String Description, String Catagory){
-        this(Code, Name, Description);
+    public Course(int ID, String Name, String Description, String Catagory){
+        this(ID, Name, Description);
         this.Catagory = Catagory;
     }
     public String getCatagory(){
@@ -33,8 +39,8 @@ public class Course implements Serializable{
         this.Catagory = Catagory;
     }
     
-    public String getCode() {
-        return Code;
+    public int getID() {
+        return ID;
     }
     public String getName() {
         return Name;
@@ -42,8 +48,8 @@ public class Course implements Serializable{
     public String getDescription() {
         return Description;
     }
-    public void setCode(String Code) {
-        this.Code = Code;
+    public void setCode(int ID) {
+        this.ID = ID;
     }
     public void setName(String Name) {
         this.Name = Name;

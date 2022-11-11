@@ -179,7 +179,7 @@ public class LoginFrame extends javax.swing.JFrame {
         else if(username.equals("")&&!(password.equals(""))){
             JOptionPane.showMessageDialog(this,"Please Enter User..");
         }
-        else if (username.equals("Sam")&&password.equals("nigger")){
+        else if (username.equals("Sam")&&password.equals("hi")){
             HomeFrame hframe = new HomeFrame();
             hframe.setVisible(true);
         }

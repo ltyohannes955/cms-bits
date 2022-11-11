@@ -5,82 +5,70 @@
 package Service;
 import base.AppendableObjectOutputStream;
 import com.cms.mavenproject1.Course;
+import com.cms.mavenproject1.Material;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.io.Serializable;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 /**
  *
  * @author samab
  */
-public class CourseService {
-    private final String filename = "courses.obj";
+public class CourseService implements Serializable{
     
     public void save(Course course) throws IOException {
-        File f = new File(filename);
-        FileOutputStream fos = null;
-        ObjectOutputStream oos = null;
-        try {
-            if (f.exists()) {
-                fos = new FileOutputStream(filename, true);
-                oos = new AppendableObjectOutputStream(fos);
-            } else {
-                fos = new FileOutputStream(filename);
-                oos = new ObjectOutputStream(fos);
-            }
-            
-            oos.writeObject(course);
-            
-            oos.close();
-            fos.close();
-        }finally {
-            if (oos != null){
-                oos.close();
-            }
-            if (fos != null){
-                fos.close();
-            }                            
-        }
+        String sql = String.format(
+        "INSERT INTO course(course_name, description, catagory) VALUES('%s', '%s', '%s')",
+                course.getName(),
+                course.getDescription(),
+                course.getCatagory());
+        DatabaseService service = new DatabaseService();
+        service.execute(sql);
     }
     
     public ArrayList<Course> getAll() {
-        boolean eof = false;
         ArrayList<Course> data = new ArrayList<>();
+        String sql = "SELECT * FROM course ORDER BY id";
+        DatabaseService service = new DatabaseService();
         
-        try (
-                FileInputStream fis = new FileInputStream(filename);
-                ObjectInputStream ois = new ObjectInputStream(fis)) {
-                Course course;
-                
-                while (!eof){
-                    course = (Course)ois.readObject();
-                    if (course != null) {
-                        data.add(course);
-                    } else {
-                        eof = true;
-                    }
-                }
-        } catch (IOException ex) {
+        try(
+                Connection conn = service.connect();
+                Statement stmt = conn.createStatement();
+                ResultSet rs = stmt.executeQuery(sql)
+        ){
+            while(rs.next()){
+                data.add(
+                    new Course(
+                        rs.getString(""),
+                        rs.getString(""),
+                        rs.getString("")
+                    )
+                );
+            }
+        }catch (SQLException ex){
             ex.printStackTrace();
-        }finally {
+        }finally{
             return data;
         }
+        
     }
-    
-    public void writeAll(List<Course> courses) {
-        try {
-            try (FileOutputStream fos = new FileOutputStream(filename);
-                 ObjectOutputStream oos = new ObjectOutputStream(fos)) {
-                for (Course course: courses) {
-                    oos.writeObject(course);
-                }
-            }
-        } catch (IOException ex){
-            
-        }
+    public void update(Course course, String column, String value){
+        String sql = String.format(
+                "UPDATE course SET %s='%s' WHERE id=%d",
+                column,
+                value,
+                course.getID()
+        );
+        DatabaseService service = new DatabaseService();
+        service.execute(sql);
     }
 }

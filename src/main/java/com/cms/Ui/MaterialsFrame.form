@@ -54,7 +54,7 @@
                       <Component id="comboCata" pref="106" max="32767" attributes="0"/>
                       <Component id="UploadBtn" pref="106" max="32767" attributes="0"/>
                       <Component id="AddBtn" max="32767" attributes="0"/>
-                      <Component id="jLabel3" max="32767" attributes="0"/>
+                      <Component id="jLabel3" alignment="0" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace max="32767" attributes="0"/>
               </Group>
