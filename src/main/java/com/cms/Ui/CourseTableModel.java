@@ -50,7 +50,7 @@ public class CourseTableModel extends AbstractTableModel {
     public Object getValueAt(int rowIndex, int columnIndex) {
         var methodName = String.format("get%s", (String) fieldMap.get(columnIndex));
         Method method = Util.getByMethodName(courses.get(rowIndex), methodName);
-        return (String) Util.callMethod(method, courses.get(rowIndex));
+        return Util.callMethod(method, courses.get(rowIndex)).toString();
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     @Override

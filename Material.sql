@@ -14,7 +14,7 @@ CREATE TABLE public.Material (
 
 CREATE TABLE public.Course (
     course_name varchar NOT NULL,
-    descritption varchar NOT NULL,
+    description varchar NOT NULL,
     catagory varchar NOT NULL,
     id int NOT NULL GENERATED ALWAYS AS IDENTITY,
     CONSTRAINT course_pk PRIMARY KEY(id)

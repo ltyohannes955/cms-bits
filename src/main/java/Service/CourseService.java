@@ -48,9 +48,10 @@ public class CourseService implements Serializable{
             while(rs.next()){
                 data.add(
                     new Course(
-                        rs.getString(""),
-                        rs.getString(""),
-                        rs.getString("")
+                        rs.getInt("id"),
+                        rs.getString("course_name"),
+                        rs.getString("description"),
+                        rs.getString("catagory")
                     )
                 );
             }
