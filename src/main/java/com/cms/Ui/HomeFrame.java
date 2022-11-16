@@ -56,6 +56,11 @@ public class HomeFrame extends javax.swing.JFrame {
 
         jButton5.setBackground(new java.awt.Color(204, 204, 204));
         jButton5.setText("Gradute program-IT Managment");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jLabel1.setText("COURSE MANAGEMENT SYSTEM");
@@ -165,6 +170,11 @@ public class HomeFrame extends javax.swing.JFrame {
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
+         //open UGSWEYEAR1semester2
+        UGSWEYEAR1semester2 y1s2 = new UGSWEYEAR1semester2();
+        y1s2.show();
+        
+        dispose();//closecurrentframe after opening UGSWEYEAR1semester1
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -178,6 +188,15 @@ public class HomeFrame extends javax.swing.JFrame {
         CourseFrame cFrame = new CourseFrame();
         cFrame.setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        // TODO add your handling code here:
+          //open UGSWEYEAR1semester2
+        Graduate_program_IT GPI = new Graduate_program_IT();
+        GPI.show();
+        
+        dispose();//closecurrentframe after opening UGSWEYEAR1semester1
+    }//GEN-LAST:event_jButton5ActionPerformed
 
     /**
      * @param args the command line arguments
