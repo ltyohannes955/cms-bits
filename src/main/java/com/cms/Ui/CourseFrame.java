@@ -183,10 +183,13 @@ public class CourseFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
         if (codeF.getText().equals("") ) {
             JOptionPane.showMessageDialog(this, "code entry are empty!");
+            throw new IllegalArgumentException("you haven't entered a value yet.");
         } else if(nameF.getText().equals("")){
             JOptionPane.showMessageDialog(this, "name entry is missing!");
+            throw new IllegalArgumentException("you haven't entered the name.");
         } else if(descriptionF.getText().equals("")){
             JOptionPane.showMessageDialog(this, "description field is empty!");
+            throw new IllegalArgumentException("you haven't entered the description value.");
         } else {
             CourseService service = new CourseService();
             Course course = new Course(nameF.getText(),codeF.getText(), descriptionF.getText(), (String) catagoryCombo.getSelectedItem()); 
