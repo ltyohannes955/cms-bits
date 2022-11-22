@@ -7,10 +7,10 @@ package com.cms.Ui;
 import Service.CourseService;
 import com.cms.mavenproject1.Course;
 import com.cms.mavenproject1.Util;
-import java.awt.List;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import javax.swing.table.AbstractTableModel;
 
@@ -20,7 +20,7 @@ import javax.swing.table.AbstractTableModel;
  * @author samab
  */
 public class CourseTableModel extends AbstractTableModel {
-    java.util.List<Course> courses = new ArrayList<>();
+    List<Course> courses = new ArrayList<>();
     String columnNames[] = {"Course Code","Name","Description","Catagory"};
     
     Class<?> columnClasses[] = {String.class, String.class, String.class, String.class};

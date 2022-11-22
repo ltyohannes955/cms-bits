@@ -189,7 +189,7 @@ public class CourseFrame extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "description field is empty!");
         } else {
             CourseService service = new CourseService();
-            Course course = new Course(codeF.getText(), nameF.getText(), descriptionF.getText(), (String) catagoryCombo.getSelectedItem()); 
+            Course course = new Course(nameF.getText(),codeF.getText(), descriptionF.getText(), (String) catagoryCombo.getSelectedItem()); 
             try {
                 service.save(course);
             } catch (IOException ex) {
