@@ -4,8 +4,8 @@
  */
 package com.cms.Ui;
 
-import Service.CourseService;
-import com.cms.mavenproject1.Course;
+import Service.MaterialService;
+import com.cms.mavenproject1.Material;
 import com.cms.mavenproject1.Util;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
@@ -14,29 +14,26 @@ import java.util.List;
 import java.util.Map;
 import javax.swing.table.AbstractTableModel;
 
-
 /**
  *
  * @author samab
  */
-public class CourseTableModel extends AbstractTableModel {
-    
-    List<Course> courses = new ArrayList<>();
-    String columnNames[] = {"Name","Description","Catagory"};
-    
-    Class<?> columnClasses[] = { String.class, String.class, String.class};
+public class MaterialTableModel extends AbstractTableModel {
+    List<Material> materials = new ArrayList<>();
+    String columnNames[] = {"File Name","File Path", "Course"};
+    Class<?> columnClasses[] = {String.class, String.class, String.class};
     
     Map fieldMap = new HashMap();
     
-    CourseTableModel(){
-        fieldMap.put(0, "Name");
-        fieldMap.put(1,"Description");
-        fieldMap.put(2, "Catagory");
+    MaterialTableModel(){
+        fieldMap.put(0, "File Name");
+        fieldMap.put(1, "File Path");
+        fieldMap.put(2, "Course");
     }
 
     @Override
     public int getRowCount() {
-        return courses.size();
+        return materials.size();
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
@@ -49,10 +46,11 @@ public class CourseTableModel extends AbstractTableModel {
     @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
         var methodName = String.format("get%s", (String) fieldMap.get(columnIndex));
-        Method method = Util.getByMethodName(courses.get(rowIndex), methodName);
-        return (String) Util.callMethod(method, courses.get(rowIndex));
+        Method method = Util.getByMethodName(materials.get(rowIndex), methodName);
+        return (String) Util.callMethod(method, materials.get(rowIndex));
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
     @Override
     public String getColumnName(int columnIndex) {
         return columnNames[columnIndex];
@@ -71,15 +69,14 @@ public class CourseTableModel extends AbstractTableModel {
     @Override
     public void setValueAt(Object aValue, int rowIndex, int columnIndex) {
         var methodName = String.format("set%s", (String) fieldMap.get(columnIndex));
-        Method method = Util.getByMethodName(courses.get(rowIndex), methodName, String.class);
-        Util.callMethod(method, courses.get(rowIndex), aValue);
+        Method method = Util.getByMethodName(materials.get(rowIndex), methodName, String.class);
+        Util.callMethod(method, materials.get(rowIndex), aValue);
 
         fireTableCellUpdated(rowIndex, columnIndex);
         
-        CourseService service = new CourseService();
-        service.writeAll(courses);
+        MaterialService service = new MaterialService();
+        service.writeAll(materials);    
     }
-    
     
     
 }

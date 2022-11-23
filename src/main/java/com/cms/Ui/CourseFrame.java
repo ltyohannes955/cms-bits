@@ -43,8 +43,6 @@ public class CourseFrame extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         nameF = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
-        codeF = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         descriptionF = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
@@ -65,15 +63,6 @@ public class CourseFrame extends javax.swing.JFrame {
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel3.setText("Course Name:");
-
-        jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel4.setText("Course Code:");
-
-        codeF.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                codeFActionPerformed(evt);
-            }
-        });
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel5.setText("Course Catagory:");
@@ -105,16 +94,13 @@ public class CourseFrame extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(31, 31, 31)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel4)
                     .addComponent(jLabel5)
                     .addComponent(jLabel3)
                     .addComponent(jLabel6))
                 .addGap(24, 24, 24)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(nameF, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(catagoryCombo, javax.swing.GroupLayout.Alignment.LEADING, 0, 148, Short.MAX_VALUE)
-                        .addComponent(codeF, javax.swing.GroupLayout.Alignment.LEADING))
+                    .addComponent(catagoryCombo, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                         .addGroup(jPanel1Layout.createSequentialGroup()
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -126,15 +112,11 @@ public class CourseFrame extends javax.swing.JFrame {
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(28, 28, 28)
+                .addGap(58, 58, 58)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(nameF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(12, 12, 12)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(codeF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4))
-                .addGap(12, 12, 12)
+                .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
                     .addComponent(catagoryCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -181,15 +163,15 @@ public class CourseFrame extends javax.swing.JFrame {
 
     private void addBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addBtnActionPerformed
         // TODO add your handling code here:
-        if (codeF.getText().equals("") ) {
-            JOptionPane.showMessageDialog(this, "code entry are empty!");
-        } else if(nameF.getText().equals("")){
+        if(nameF.getText().equals("")){
             JOptionPane.showMessageDialog(this, "name entry is missing!");
+            throw new IllegalArgumentException("you haven't entered a value yet.");
         } else if(descriptionF.getText().equals("")){
             JOptionPane.showMessageDialog(this, "description field is empty!");
+            throw new IllegalArgumentException("you haven't entered the description value.");
         } else {
             CourseService service = new CourseService();
-            Course course = new Course(nameF.getText(),codeF.getText(), descriptionF.getText(), (String) catagoryCombo.getSelectedItem()); 
+            Course course = new Course(nameF.getText() descriptionF.getText(), (String) catagoryCombo.getSelectedItem()); 
             try {
                 service.save(course);
             } catch (IOException ex) {
@@ -197,7 +179,6 @@ public class CourseFrame extends javax.swing.JFrame {
             model.courses.add(course);
             model.fireTableDataChanged();
             nameF.setText("");
-            codeF.setText("");
             descriptionF.setText("");
         }
         
@@ -209,14 +190,10 @@ public class CourseFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_catagoryComboActionPerformed
 
-    private void codeFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_codeFActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_codeFActionPerformed
-
     /**
      * @param args the command line arguments
      */
-    //public static void main(String args[]) {
+    public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -242,22 +219,20 @@ public class CourseFrame extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        //java.awt.EventQueue.invokeLater(new Runnable() {
-           // public void run() {
-          //      new CourseFrame().setVisible(true);
-          //  }
-       // });
-   // }
+        java.awt.EventQueue.invokeLater(new Runnable() {
+           public void run() {
+                new CourseFrame().setVisible(true);
+            }
+        });
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addBtn;
     private javax.swing.JComboBox<String> catagoryCombo;
-    private javax.swing.JTextField codeF;
     private javax.swing.JTextField descriptionF;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;

@@ -4,38 +4,47 @@
  */
 package com.cms.mavenproject1;
 
+import java.io.Serializable;
+
 /**
  *
  * @author samab
  */
-public class Material {
-    private int ID;
-    private Course course;
-    private String name;
-
-
-
-    public int getID() {
-        return ID;
+public class Material implements Serializable{
+    private String File_path;
+    private String course;
+    private String File_name;
+    
+    public Material(String File_path, String course, String File_name){
+        this.File_path = File_path;
+        this.course= course;
+        this.File_name= File_name;
     }
 
-    public void setID(int ID) {
-        this.ID = ID;
+
+
+
+    public String getFile_path() {
+        return File_path;
     }
 
-    public Course getCourse() {
+    public void setFile_path(String File_path) {
+        this.File_path = File_path;
+    }
+
+    public String getCourse() {
         return course;
     }
 
-    public void setCourse(Course course) {
+    public void setCourse(String course) {
         this.course = course;
     }
 
-    public String getName() {
-        return name;
+    public String getFile_name() {
+        return File_name;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setFile_name(String File_name) {
+        this.File_name = File_name;
     }
 }
