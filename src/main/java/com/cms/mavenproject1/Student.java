@@ -13,17 +13,24 @@ public class Student {
     private String First_Name;
     private String Last_Name;
     private String Gender;
+    private int Average;
+    private String Grade;
 
     public Student(){
     }
-    public Student(int ID, String First_Name, String Last_Name, String Gender){
+    public Student( int ID,String First_Name, String Last_Name, String Gender){
         this.ID = ID;
         this.First_Name = First_Name;
         this.Last_Name = Last_Name;
         this.Gender = Gender;
     }
-
-    public int getID() {
+    public Student (int ID, String First_Name, String Last_Name, String Gender, int Average, String Grade ){
+        this(ID, First_Name, Last_Name, Gender);
+        this.Average = Average;
+        this.Grade = Grade;
+    }
+    
+    public int getID(){
         return ID;
     }
     public String getFirst_Name(){
@@ -34,5 +41,11 @@ public class Student {
     }
     public String getGender(){
         return Gender;
+    }
+    public int getAverage(){
+        return Average;
+    }
+    public String getGrade(){
+        return Grade;
     }
 }

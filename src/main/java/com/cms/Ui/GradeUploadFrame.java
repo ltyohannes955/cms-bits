@@ -4,16 +4,23 @@
  */
 package com.cms.Ui;
 
+import Service.StudentService;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author samab
  */
 public class GradeUploadFrame extends javax.swing.JFrame {
-
+    GradeUploadTableModel model;
     /**
      * Creates new form GradeUploadFrame
      */
     public GradeUploadFrame() {
+        model = new GradeUploadTableModel();
+        StudentService service = new StudentService();
+        model.students = service.getAll();
         initComponents();
     }
 
@@ -59,17 +66,7 @@ public class GradeUploadFrame extends javax.swing.JFrame {
             }
         });
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
+        jTable1.setModel(model);
         jScrollPane1.setViewportView(jTable1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -126,7 +123,7 @@ public class GradeUploadFrame extends javax.swing.JFrame {
                             .addComponent(gradeField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addComponent(addBtn)))
-                .addContainerGap(50, Short.MAX_VALUE))
+                .addContainerGap(74, Short.MAX_VALUE))
         );
 
         pack();
@@ -134,6 +131,35 @@ public class GradeUploadFrame extends javax.swing.JFrame {
 
     private void addBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addBtnActionPerformed
         // TODO add your handling code here:
+        String grade = averageField.getText();
+        int i = Integer.parseInt(grade);
+        if(i>=90){
+            gradeField.setText("A");
+        }
+        else if (i>=80){
+            gradeField.setText("B");
+        }  
+        else if (i>=70){
+            gradeField.setText("C");
+        }
+        else if (i>=60){
+            gradeField.setText("D");
+        }
+        else{
+            gradeField.setText("F");
+        }
+        if(fnameField.getText().equals("")||lnameField.getText().equals("")||genderField.getText().equals("")||averageField.getText().equals("")||gradeField.getText().equals("")){
+            JOptionPane.showMessageDialog(this, "please fill all the fields");
+        }
+        else{
+            String data[]={fnameField.getText(),lnameField.getText(),genderField.getText(),averageField.getText(),gradeField.getText()};
+            DefaultTableModel tableModel=(DefaultTableModel)jTable1.getModel();
+            tableModel.addRow(data);
+//            JOptionPane.showMessageDialog(this, "successfully added");
+//             gradeTextField.setText("");
+//             averageTextField.setText("");
+    
+            }
     }//GEN-LAST:event_addBtnActionPerformed
 
     /**
