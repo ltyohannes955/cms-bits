@@ -159,11 +159,6 @@ public class MaterialFrame extends javax.swing.JFrame {
         File f = chooser.getSelectedFile();
         String fileName = f.getAbsolutePath();
         PathTextField.setText(fileName);
-        try {
-            if (status != JFileChooser.APPROVE_OPTION){
-                f = chooser.getSelectedFile();
-            }
-        }catch (File )
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed

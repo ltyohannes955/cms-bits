@@ -171,7 +171,7 @@ public class CourseFrame extends javax.swing.JFrame {
             throw new IllegalArgumentException("you haven't entered the description value.");
         } else {
             CourseService service = new CourseService();
-            Course course = new Course(nameF.getText() descriptionF.getText(), (String) catagoryCombo.getSelectedItem()); 
+            Course course = new Course(nameF.getText(), descriptionF.getText(), (String) catagoryCombo.getSelectedItem()); 
             try {
                 service.save(course);
             } catch (IOException ex) {
