@@ -50,7 +50,7 @@ public class GradeUploadTableModel extends AbstractTableModel {
     public Object getValueAt(int rowIndex, int columnIndex) {
         var methodName = String.format("get%s", (String) fieldMap.get(columnIndex));
         Method method = Util.getByMethodName(students.get(rowIndex), methodName);
-        return Util.callMethod(method, students.get(rowIndex)).toString();        
+        return Util.callMethod(method, students.get(rowIndex));        
     }
     @Override
     public String getColumnName(int columnIndex) {

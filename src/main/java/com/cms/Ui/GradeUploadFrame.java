@@ -5,6 +5,9 @@
 package com.cms.Ui;
 
 import Service.StudentService;
+import com.cms.mavenproject1.Student;
+import java.io.IOException;
+import static java.lang.Integer.parseInt;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -148,17 +151,23 @@ public class GradeUploadFrame extends javax.swing.JFrame {
         else{
             gradeField.setText("F");
         }
-        if(fnameField.getText().equals("")||lnameField.getText().equals("")||genderField.getText().equals("")||averageField.getText().equals("")||gradeField.getText().equals("")){
+        if(fnameField.getText().equals("")||lnameField.getText().equals("")||genderField.getText().equals("")|| averageField.getText().equals("")||gradeField.getText().equals("")){
             JOptionPane.showMessageDialog(this, "please fill all the fields");
         }
         else{
-            String data[]={fnameField.getText(),lnameField.getText(),genderField.getText(),averageField.getText(),gradeField.getText()};
-            DefaultTableModel tableModel=(DefaultTableModel)jTable1.getModel();
-            tableModel.addRow(data);
-//            JOptionPane.showMessageDialog(this, "successfully added");
-//             gradeTextField.setText("");
-//             averageTextField.setText("");
-    
+            StudentService service = new StudentService();
+            Student student = new Student(fnameField.getText(), lnameField.getText(),genderField.getText(), parseInt(averageField.getText()) ,gradeField.getText());
+            try {
+                service.save(student);
+            } catch (IOException ex){                
+            }
+            model.students.add(student);
+            model.fireTableDataChanged();
+            fnameField.setText("");
+            lnameField.setText("");
+            genderField.setText("");
+            averageField.setText("");
+            gradeField.setText("");
             }
     }//GEN-LAST:event_addBtnActionPerformed
 

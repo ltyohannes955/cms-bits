@@ -24,12 +24,21 @@ public class Student {
         this.Last_Name = Last_Name;
         this.Gender = Gender;
     }
-    public Student (int ID, String First_Name, String Last_Name, String Gender, int Average, String Grade ){
-        this(ID, First_Name, Last_Name, Gender);
+    public Student ( String First_Name, String Last_Name, String Gender, int Average, String Grade ){
+        this.First_Name= First_Name;
+        this.Last_Name = Last_Name;
+        this.Gender = Gender;
         this.Average = Average;
         this.Grade = Grade;
     }
-    
+    public Student ( int ID, String First_Name, String Last_Name, String Gender, int Average, String Grade ){
+        this.ID = ID;
+        this.First_Name= First_Name;
+        this.Last_Name = Last_Name;
+        this.Gender = Gender;
+        this.Average = Average;
+        this.Grade = Grade;
+    }    
     public int getID(){
         return ID;
     }

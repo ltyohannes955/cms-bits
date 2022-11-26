@@ -31,7 +31,7 @@ public class StudentService {
     
     public ArrayList<Student> getAll() {
         ArrayList<Student> data = new ArrayList<>();
-        String sql = "SELECT * FROM course ORDER BY id";
+        String sql = "SELECT * FROM student ORDER BY id";
         DatabaseService service = new DatabaseService();
         
         try(
