@@ -43,6 +43,7 @@ public class CourseFrame extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         nameField = new javax.swing.JTextField();
+
         jLabel5 = new javax.swing.JLabel();
         descriptionField = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
@@ -227,6 +228,7 @@ public class CourseFrame extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addBtn;
     private javax.swing.JComboBox<String> catagoryCombo;
+    private javax.swing.JTextField codeField;
     private javax.swing.JTextField descriptionField;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
