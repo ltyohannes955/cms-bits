@@ -26,6 +26,30 @@ public class GradeUploadFrame extends javax.swing.JFrame {
         model.students = service.getAll();
         initComponents();
     }
+    
+    public String grade (int i) throws IllegalAccessException{
+        if(i<0){
+                throw new IllegalAccessException("Grade can not be less than 0");
+            }
+            else if (i<= 60){
+            return "F";
+      }  
+          else if (i<=70){
+              return "D";
+          }
+          else if (i<=80){
+              return "C";
+          }
+          else if (i <= 90){
+              return "B";
+          }
+          else if (i <= 100){
+              return "A";
+          }
+          else{
+              throw new IllegalAccessException("Grade can not be more than 100");
+          }
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -134,29 +158,38 @@ public class GradeUploadFrame extends javax.swing.JFrame {
 
     private void addBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addBtnActionPerformed
         // TODO add your handling code here:
-        String grade = averageField.getText();
-        int i = Integer.parseInt(grade);
-        if(i>=90){
-            gradeField.setText("A");
-        }
-        else if (i>=80){
-            gradeField.setText("B");
-        }  
-        else if (i>=70){
-            gradeField.setText("C");
-        }
-        else if (i>=60){
-            gradeField.setText("D");
-        }
-        else{
+        String gradeAve = averageField.getText();
+        int i = Integer.parseInt(gradeAve);
+        if(i<0){
+            JOptionPane.showMessageDialog(this,"Average can not be less than 0");
+            }
+            else if (i<= 60){
             gradeField.setText("F");
-        }
+      }  
+          else if (i<=70){
+              gradeField.setText("D");
+          }
+          else if (i<=80){
+              gradeField.setText("C");
+          }
+          else if (i <= 90){
+              gradeField.setText("B");
+          }
+          else if (i <= 100){
+              gradeField.setText("A");
+          }
+          else{
+            JOptionPane.showMessageDialog(this,"Average can not be more than 100");
+            
+          }
+        
+        
         if(fnameField.getText().equals("")||lnameField.getText().equals("")||genderField.getText().equals("")|| averageField.getText().equals("")||gradeField.getText().equals("")){
             JOptionPane.showMessageDialog(this, "please fill all the fields");
         }
         else{
             StudentService service = new StudentService();
-            Student student = new Student(fnameField.getText(), lnameField.getText(),genderField.getText(), parseInt(averageField.getText()) ,gradeField.getText());
+            Student student = new Student(fnameField.getText(), lnameField.getText(),genderField.getText(),Integer.parseInt(averageField.getText()) ,gradeField.getText());
             try {
                 service.save(student);
             } catch (IOException ex){                
