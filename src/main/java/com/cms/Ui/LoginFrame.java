@@ -182,6 +182,7 @@ public class LoginFrame extends javax.swing.JFrame {
         else if (username.equals("User")&&password.equals("Password")){
             HomeFrame hframe = new HomeFrame();
             hframe.setVisible(true);
+            this.setVisible(false);
         }
         else{
             JOptionPane.showMessageDialog(this,"Invalid username and password");

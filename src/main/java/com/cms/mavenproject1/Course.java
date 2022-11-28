@@ -32,6 +32,10 @@ public class Course implements Serializable{
         this(ID, Name, Description);
         this.Catagory = Catagory;
     }
+
+    public Course() {
+    }
+
     public String getCatagory(){
         return Catagory;
     }

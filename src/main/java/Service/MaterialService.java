@@ -4,6 +4,7 @@
  */
 package Service;
 
+import com.cms.mavenproject1.Course;
 import com.cms.mavenproject1.Material;
 import java.io.IOException;
 import java.io.Serializable;
@@ -42,7 +43,7 @@ public class MaterialService implements Serializable{
                 data.add(
                     new Material(
                         rs.getString(""),
-                        rs.getString(""),
+                        rs.getString(""),                        
                         rs.getString("")
                     )
                 );
@@ -64,4 +65,5 @@ public class MaterialService implements Serializable{
         DatabaseService service = new DatabaseService();
         service.execute(sql);
     }
+
 }

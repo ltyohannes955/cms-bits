@@ -19,8 +19,8 @@ import javax.swing.table.AbstractTableModel;
  * @author samab
  */
 public class GradeUploadTableModel extends AbstractTableModel {
-    List<Student> students =  new ArrayList<>();
-    String columnNames [] = {"ID","First Name", "Last Name", "Gender", "Average", "Grade"};
+    java.util.List<Student> students =  new ArrayList<>();
+    String columnNames [] = {"ID","First_Name", "Last_Name", "Gender", "Average", "Grade"};
     
     Class<?> columnClasses[] = {int.class, String.class, String.class, String.class, int.class, String.class};
     
@@ -28,8 +28,8 @@ public class GradeUploadTableModel extends AbstractTableModel {
     
     GradeUploadTableModel(){
         fieldMap.put(0, "ID");
-        fieldMap.put(1, "First Name");
-        fieldMap.put(2, "Last Name");
+        fieldMap.put(1, "First_Name");
+        fieldMap.put(2, "Last_Name");
         fieldMap.put(3, "Gender");
         fieldMap.put(4, "Average");
         fieldMap.put(5, "Grade");
@@ -50,7 +50,8 @@ public class GradeUploadTableModel extends AbstractTableModel {
     public Object getValueAt(int rowIndex, int columnIndex) {
         var methodName = String.format("get%s", (String) fieldMap.get(columnIndex));
         Method method = Util.getByMethodName(students.get(rowIndex), methodName);
-        return Util.callMethod(method, students.get(rowIndex));        
+        Object result = Util.callMethod(method, students.get(rowIndex));   
+        return columnIndex == 0 || columnIndex == 4 ? (int)result : (String) result;
     }
     @Override
     public String getColumnName(int columnIndex) {

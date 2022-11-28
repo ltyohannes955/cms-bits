@@ -5,6 +5,7 @@
 package com.cms.Ui;
 
 import Service.MaterialService;
+import com.cms.mavenproject1.Course;
 import com.cms.mavenproject1.Material;
 import java.io.File;
 import java.io.IOException;
@@ -173,7 +174,7 @@ public class MaterialsFrame extends javax.swing.JFrame {
             }
         else {
             MaterialService service = new MaterialService();
-            Material material = new Material(fName.getText(), PathTextField.getText(), (String)comboCata.getSelectedItem());
+            Material material = new Material(fName.getText(), PathTextField.getText(), (String) comboCata.getSelectedItem());
             try {
                 service.add(material);
             } catch(IOException ex){

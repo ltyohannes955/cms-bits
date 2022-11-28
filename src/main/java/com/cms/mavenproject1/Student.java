@@ -10,31 +10,31 @@ package com.cms.mavenproject1;
  */
 public class Student {
     private int ID;
-    private String First_Name;
-    private String Last_Name;
+    private String fname;
+    private String lname;
     private String Gender;
     private int Average;
     private String Grade;
 
     public Student(){
     }
-    public Student( int ID,String First_Name, String Last_Name, String Gender){
+    public Student( int ID,String fname, String lname, String Gender){
         this.ID = ID;
-        this.First_Name = First_Name;
-        this.Last_Name = Last_Name;
+        this.fname = fname;
+        this.lname = lname;
         this.Gender = Gender;
     }
-    public Student ( String First_Name, String Last_Name, String Gender, int Average, String Grade ){
-        this.First_Name= First_Name;
-        this.Last_Name = Last_Name;
+    public Student ( String fname, String lname, String Gender, int Average, String Grade ){
+        this.fname= fname;
+        this.lname = lname;
         this.Gender = Gender;
         this.Average = Average;
         this.Grade = Grade;
     }
-    public Student ( int ID, String First_Name, String Last_Name, String Gender, int Average, String Grade ){
+    public Student ( int ID, String fname, String lname, String Gender, int Average, String Grade ){
         this.ID = ID;
-        this.First_Name= First_Name;
-        this.Last_Name = Last_Name;
+        this.fname= fname;
+        this.lname = lname;
         this.Gender = Gender;
         this.Average = Average;
         this.Grade = Grade;
@@ -43,10 +43,10 @@ public class Student {
         return ID;
     }
     public String getFirst_Name(){
-        return First_Name;
+        return fname;
     }
     public String getLast_Name(){
-        return Last_Name;
+        return lname;
     }
     public String getGender(){
         return Gender;
@@ -57,4 +57,30 @@ public class Student {
     public String getGrade(){
         return Grade;
     }
+
+    public void setID(int ID) {
+        this.ID = ID;
+    }
+
+    public void setFirstName(String fname) {
+        this.fname = fname;
+    }
+
+    public void setLastName(String lname) {
+        this.lname = lname;
+    }
+
+    public void setGender(String Gender) {
+        this.Gender = Gender;
+    }
+
+    public void setAverage(int Average) {
+        this.Average = Average;
+    }
+
+    public void setGrade(String Grade) {
+        this.Grade = Grade;
+    }
+    
+    
 }

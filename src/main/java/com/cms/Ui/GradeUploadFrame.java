@@ -156,7 +156,7 @@ public class GradeUploadFrame extends javax.swing.JFrame {
         }
         else{
             StudentService service = new StudentService();
-            Student student = new Student(fnameField.getText(), lnameField.getText(),genderField.getText(), parseInt(averageField.getText()) ,gradeField.getText());
+            Student student = new Student(fnameField.getText(), lnameField.getText(),genderField.getText(), Integer.parseInt(averageField.getText()) ,gradeField.getText());
             try {
                 service.save(student);
             } catch (IOException ex){                
