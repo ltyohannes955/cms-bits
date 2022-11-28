@@ -18,6 +18,25 @@ public class LoginFrame extends javax.swing.JFrame {
     public LoginFrame() {
         initComponents();
     }
+    
+    public boolean user (String user){
+        if(user.equals("User")){
+            return true;
+        }
+        else{
+            return false;
+    }
+        
+    }
+    
+    public boolean password (String password){
+        if(password.equals("Password")){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
