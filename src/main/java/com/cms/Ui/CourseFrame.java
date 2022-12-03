@@ -70,7 +70,7 @@ public class CourseFrame extends javax.swing.JFrame {
         jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel6.setText("Course Description:");
 
-        catagoryCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "civics", "math", "english", "software ", "oop" }));
+        catagoryCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "year 1", "year 2", "year 3", "year 4" }));
         catagoryCombo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 catagoryComboActionPerformed(evt);

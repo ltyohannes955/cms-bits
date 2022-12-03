@@ -18,18 +18,18 @@ import java.util.List;
  * @author samab
  */
 public class CourseService {
-    private final String filename = "courses.obj";
+    private final String fname = "courses.obj";
     
     public void save(Course course) throws IOException {
-        File f = new File(filename);
+        File f = new File(fname);
         FileOutputStream fos = null;
         ObjectOutputStream oos = null;
         try {
             if (f.exists()) {
-                fos = new FileOutputStream(filename, true);
+                fos = new FileOutputStream(fname, true);
                 oos = new AppendableObjectOutputStream(fos);
             } else {
-                fos = new FileOutputStream(filename);
+                fos = new FileOutputStream(fname);
                 oos = new ObjectOutputStream(fos);
             }
             
@@ -52,7 +52,7 @@ public class CourseService {
         ArrayList<Course> data = new ArrayList<>();
         
         try (
-                FileInputStream fis = new FileInputStream(filename);
+                FileInputStream fis = new FileInputStream(fname);
                 ObjectInputStream ois = new ObjectInputStream(fis)) {
                 Course course;
                 
@@ -73,7 +73,7 @@ public class CourseService {
     
     public void writeAll(List<Course> courses) {
         try {
-            try (FileOutputStream fos = new FileOutputStream(filename);
+            try (FileOutputStream fos = new FileOutputStream(fname);
                  ObjectOutputStream oos = new ObjectOutputStream(fos)) {
                 for (Course course: courses) {
                     oos.writeObject(course);
