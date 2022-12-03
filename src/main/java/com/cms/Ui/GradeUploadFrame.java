@@ -60,6 +60,8 @@ public class GradeUploadFrame extends javax.swing.JFrame {
 
         jLabel5.setText("Grade");
 
+        gradeField.setEditable(false);
+
         addBtn.setText("Add");
         addBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -134,20 +136,26 @@ public class GradeUploadFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
         String grade = averageField.getText();
         int i = Integer.parseInt(grade);
-        if(i>=90){
-            gradeField.setText("A");
+        if (i < 0){
+            JOptionPane.showMessageDialog(this ,"Average can not be less than 0");
         }
-        else if (i>=80){
-            gradeField.setText("B");
+        else if(i<=60){
+            gradeField.setText("F");
+        }
+        else if (i<=70){
+            gradeField.setText("D");
         }  
-        else if (i>=70){
+        else if (i<=80){
             gradeField.setText("C");
         }
-        else if (i>=60){
-            gradeField.setText("D");
+        else if (i<=90){
+            gradeField.setText("B");
+        }
+        else if (i <= 100){
+            gradeField.setText("A");
         }
         else{
-            gradeField.setText("F");
+          JOptionPane.showMessageDialog(this ,"Average can not be more than 100");  
         }
         if(fnameField.getText().equals("")||lnameField.getText().equals("")||genderField.getText().equals("")|| averageField.getText().equals("")||gradeField.getText().equals("")){
             JOptionPane.showMessageDialog(this, "please fill all the fields");
