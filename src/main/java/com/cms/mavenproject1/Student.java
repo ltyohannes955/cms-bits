@@ -62,11 +62,11 @@ public class Student {
         this.ID = ID;
     }
 
-    public void setFirstName(String fname) {
+    public void setFirst_Name(String fname) {
         this.fname = fname;
     }
 
-    public void setLastName(String lname) {
+    public void setLast_Name(String lname) {
         this.lname = lname;
     }
 

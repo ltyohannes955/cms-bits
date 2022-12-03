@@ -20,7 +20,7 @@ import java.util.ArrayList;
 public class StudentService implements Serializable{
     public void save(Student student) throws IOException {
         String sql = String.format(
-        "INSERT INTO student(fname, lname, gender, average, grade) VALUES('%s', '%s', '%s','%s','%s')",
+        "INSERT INTO student(first_name, last_name, gender, average, grade) VALUES('%s', '%s', '%s','%s','%s')",
                 student.getFirst_Name(),
                 student.getLast_Name(),
                 student.getGender(),
@@ -44,8 +44,8 @@ public class StudentService implements Serializable{
                 data.add(
                     new Student(
                         rs.getInt("id"),
-                        rs.getString("fname"),
-                        rs.getString("lname"),
+                        rs.getString("first_name"),
+                        rs.getString("last_name"),
                         rs.getString("gender"),
                         rs.getInt("average"),
                         rs.getString("grade")
